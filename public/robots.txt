@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://studytube.co.in/sitemap.xml
