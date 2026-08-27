@@ -5,7 +5,6 @@ import { SocialIcons } from "./SocialIcons";
 import { ThemeToggle } from "./ThemeToggle";
 import { useAuth } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/studytube-logo.png.asset.json";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -21,9 +20,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:py-4">
-        <Link to="/" className="flex items-center gap-2 group">
-          <span className="inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg shadow-glow">
-            <img src={logoAsset.url} alt="StudyTube logo" className="h-full w-full object-cover" />
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <span className="inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg border border-border/60 shadow-glow bg-surface">
+            <img src="/studytube-logo.png" alt="StudyTube logo" className="h-full w-full object-cover" />
           </span>
           <span className="flex flex-col leading-tight">
             <span className="font-display text-lg font-semibold tracking-tight">
@@ -71,7 +70,6 @@ export function Header() {
           </button>
         </div>
       </div>
-
 
       <div className={cn("md:hidden border-t border-border/60 overflow-hidden transition-all", open ? "max-h-96" : "max-h-0")}>
         <div className="px-4 py-4 flex flex-col gap-1">

@@ -13,9 +13,14 @@ export function Footer() {
     <footer className="mt-24 border-t border-border/60 bg-surface/50">
       <div className="mx-auto max-w-6xl px-4 py-12 grid gap-8 md:grid-cols-3 md:items-start">
         <div className="text-sm text-muted-foreground text-center md:text-left">
-          <p className="font-display text-base text-foreground">
-            StudyTube <span className="text-muted-foreground font-normal">by Ritesh Agarwal</span>
-          </p>
+          <div className="flex items-center gap-2 justify-center md:justify-start">
+            <span className="inline-flex h-6 w-6 items-center justify-center overflow-hidden rounded-md border border-border/60 bg-surface">
+              <img src="/studytube-logo.png" alt="StudyTube logo" className="h-full w-full object-cover" />
+            </span>
+            <p className="font-display text-base text-foreground">
+              StudyTube <span className="text-muted-foreground font-normal">by Ritesh Agarwal</span>
+            </p>
+          </div>
           <p className="mt-2 max-w-xs mx-auto md:mx-0 leading-relaxed">
             Educational apps for Class 9–12, JEE &amp; NEET — built by an IIT-trained teacher with 21+ years in the classroom.
           </p>
