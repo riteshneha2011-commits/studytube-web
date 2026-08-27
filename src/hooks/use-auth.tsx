@@ -3,7 +3,6 @@ import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { isAllowlistedAdminEmail } from "@/config/admin";
 
-
 export function useAuth() {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
@@ -29,14 +28,24 @@ export function useAuth() {
       setRoleLoading(false);
       return;
     }
-    setRoleLoading(true);
+
+    // Email matches allowlist (ritesh.bhopal@gmail.com) -> grant admin immediately
+    setIsAdmin(true);
+    setRoleLoading(false);
+
+    // Also check database user_roles in background
     supabase
       .from("user_roles")
       .select("role")
       .eq("user_id", session.user.id)
       .eq("role", "admin")
       .maybeSingle()
-      .then(({ data }) => { if (!cancelled) { setIsAdmin(!!data); setRoleLoading(false); } });
+      .then(({ data }) => {
+        if (!cancelled && data) {
+          setIsAdmin(true);
+        }
+      });
+
     return () => { cancelled = true; };
   }, [session?.user?.id, session?.user?.email]);
 
