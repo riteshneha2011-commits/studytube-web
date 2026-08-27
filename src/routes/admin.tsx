@@ -98,24 +98,28 @@ function AdminPage() {
   return (
     <SiteLayout>
       <section className="mx-auto max-w-6xl px-4 pt-12 pb-16">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/50 pb-6">
           <div>
-            <p className="text-xs uppercase tracking-widest text-primary">Admin</p>
-            <h1 className="mt-2 font-display text-3xl md:text-4xl font-semibold tracking-tight">Dashboard</h1>
+            <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-widest text-[color:var(--neon-cyan)]">
+              Studio Management
+            </span>
+            <h1 className="mt-2 font-display text-3xl md:text-5xl font-extrabold tracking-tight text-foreground">
+              Admin Lab Studio
+            </h1>
           </div>
           <button
             onClick={async () => { await supabase.auth.signOut(); navigate({ to: "/", replace: true }); }}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm hover:border-primary"
+            className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/80 px-5 py-2 text-xs font-bold text-foreground hover:border-[color:var(--destructive)] hover:text-[color:var(--destructive)] transition-colors w-fit"
           >
-            <LogOut className="h-4 w-4" /> Sign out
+            <LogOut className="h-3.5 w-3.5" /> Sign out
           </button>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-2 border-b border-border pb-2">
+        <div className="mt-8 flex flex-wrap gap-2">
           {tabs.map((t) => (
             <button key={t.id} onClick={() => setTab(t.id)}
-              className={cn("px-4 py-2 rounded-full text-sm font-medium transition-colors",
-                tab === t.id ? "gradient-primary text-primary-foreground shadow-glow" : "bg-surface text-muted-foreground hover:text-foreground")}>
+              className={cn("px-5 py-2 rounded-full text-xs font-bold transition-all",
+                tab === t.id ? "gradient-primary text-primary-foreground shadow-glow" : "border border-border/70 bg-surface/70 text-muted-foreground hover:text-foreground hover:border-primary/50")}>
               {t.label}
             </button>
           ))}
