@@ -5,8 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * StudyTube Design System — Option 2: The Interactive Learning Lab
- * Dark Slate Base + Multi-Color Neon Accents (Electric Cyan, Emerald, Violet, Solar Amber)
+ * StudyTube Design System — The Interactive Learning Lab
+ * Light: "Modern Academic Lab" (Crisp Slate, Vivid Indigo/Cyan, Frosted Glass)
+ * Dark:  "Deep Obsidian Slate" (Neon Cyan, Emerald, Violet, Amber)
  */
 
 @theme inline {
@@ -54,10 +55,71 @@
 }
 
 /* ---------------------------------------------------------------
-   DARK (Default for Interactive Lab)
+   LIGHT (Default :root) — Modern Academic Lab
    --------------------------------------------------------------- */
 :root {
   --radius: 1rem;
+  color-scheme: light;
+
+  --background: oklch(0.985 0.008 250);       /* #f8fafc */
+  --foreground: oklch(0.18 0.03 260);         /* #0f172a deep navy */
+  --surface: oklch(0.96 0.012 250);           /* #f1f5f9 */
+  --surface-elevated: oklch(1 0 0);           /* #ffffff */
+  --card: oklch(1 0 0 / 0.9);
+  --card-foreground: oklch(0.18 0.03 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.03 260);
+
+  /* Primary Light: Vibrant Indigo/Cyan */
+  --primary: oklch(0.48 0.2 260);             /* #2563eb */
+  --primary-foreground: oklch(0.99 0.005 250);
+  --secondary: oklch(0.92 0.015 250);
+  --secondary-foreground: oklch(0.2 0.03 260);
+  --muted: oklch(0.93 0.01 250);
+  --muted-foreground: oklch(0.45 0.02 260);
+  --accent: oklch(0.52 0.22 290);             /* Royal Violet */
+  --accent-foreground: oklch(0.99 0.005 250);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 250);
+  --border: oklch(0.3 0.02 260 / 0.14);
+  --input: oklch(0.3 0.02 260 / 0.18);
+  --ring: oklch(0.48 0.2 260);
+
+  /* Light Subject Accent Colors */
+  --cat-practice: oklch(0.46 0.16 155);       /* Deep Emerald */
+  --cat-tools: oklch(0.48 0.19 240);          /* Deep Cyan/Blue */
+  --cat-simulations: oklch(0.5 0.22 290);     /* Deep Violet */
+  --cat-games: oklch(0.58 0.18 55);           /* Deep Amber */
+
+  --neon-cyan: oklch(0.5 0.19 240);
+  --neon-emerald: oklch(0.46 0.16 155);
+  --neon-violet: oklch(0.5 0.22 290);
+  --neon-amber: oklch(0.58 0.18 55);
+
+  --gradient-hero: 
+    radial-gradient(ellipse 80% 55% at 50% -5%, oklch(0.48 0.2 260 / 0.12), transparent 65%),
+    radial-gradient(ellipse 60% 45% at 85% 15%, oklch(0.5 0.22 290 / 0.08), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 15% 35%, oklch(0.46 0.16 155 / 0.08), transparent 50%),
+    linear-gradient(180deg, oklch(0.96 0.01 250), oklch(0.985 0.008 250));
+
+  --gradient-primary: linear-gradient(135deg, oklch(0.48 0.2 260), oklch(0.52 0.22 290));
+  --gradient-emerald: linear-gradient(135deg, oklch(0.46 0.16 155), oklch(0.48 0.2 260));
+  --gradient-amber: linear-gradient(135deg, oklch(0.58 0.18 55), oklch(0.52 0.22 290));
+  --gradient-card: linear-gradient(150deg, oklch(1 0 0 / 0.95), oklch(0.97 0.008 250 / 0.9));
+
+  --shadow-glow: 0 15px 35px -12px oklch(0.48 0.2 260 / 0.3);
+  --shadow-glow-cyan: 0 0 25px -4px oklch(0.48 0.19 240 / 0.25);
+  --shadow-glow-violet: 0 0 25px -4px oklch(0.5 0.22 290 / 0.25);
+  --shadow-glow-emerald: 0 0 25px -4px oklch(0.46 0.16 155 / 0.25);
+  --shadow-glow-amber: 0 0 25px -4px oklch(0.58 0.18 55 / 0.25);
+  --shadow-card: 0 4px 20px -8px oklch(0.2 0.03 260 / 0.1);
+  --grid-line: oklch(0.3 0.02 260 / 0.06);
+}
+
+/* ---------------------------------------------------------------
+   DARK (.dark class active) — Deep Obsidian Slate
+   --------------------------------------------------------------- */
+.dark {
   color-scheme: dark;
 
   --background: oklch(0.12 0.025 255);       /* #0a0e17 deep dark slate */
@@ -69,7 +131,7 @@
   --popover: oklch(0.18 0.04 255);
   --popover-foreground: oklch(0.98 0.01 250);
 
-  /* Primary is Electric Cyan / Neon Violet Hybrid */
+  /* Primary Dark: Electric Cyan / Vivid Violet */
   --primary: oklch(0.78 0.18 205);           /* #00f0ff Electric Cyan */
   --primary-foreground: oklch(0.12 0.025 255);
   --secondary: oklch(0.25 0.05 255);
@@ -115,50 +177,6 @@
   --grid-line: oklch(0.9 0.05 255 / 0.045);
 }
 
-/* ---------------------------------------------------------------
-   LIGHT (Clean Laboratory White/Slate)
-   --------------------------------------------------------------- */
-.light {
-  color-scheme: light;
-
-  --background: oklch(0.985 0.008 250);
-  --foreground: oklch(0.18 0.025 260);
-  --surface: oklch(0.95 0.012 250);
-  --surface-elevated: oklch(0.99 0.005 250);
-  --card: oklch(0.995 0.004 250 / 0.95);
-  --card-foreground: oklch(0.18 0.025 260);
-  --popover: oklch(0.995 0.004 250);
-  --popover-foreground: oklch(0.18 0.025 260);
-  --primary: oklch(0.52 0.18 245);
-  --primary-foreground: oklch(0.99 0.005 250);
-  --secondary: oklch(0.92 0.014 250);
-  --secondary-foreground: oklch(0.2 0.025 260);
-  --muted: oklch(0.93 0.01 250);
-  --muted-foreground: oklch(0.48 0.02 260);
-  --accent: oklch(0.55 0.2 290);
-  --accent-foreground: oklch(0.99 0.005 250);
-  --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.99 0.005 250);
-  --border: oklch(0.3 0.02 260 / 0.14);
-  --input: oklch(0.3 0.02 260 / 0.2);
-  --ring: oklch(0.52 0.18 245);
-
-  --cat-practice: oklch(0.48 0.15 155);
-  --cat-tools: oklch(0.48 0.17 220);
-  --cat-simulations: oklch(0.52 0.19 290);
-  --cat-games: oklch(0.56 0.16 60);
-
-  --gradient-hero: 
-    radial-gradient(ellipse 80% 55% at 50% -5%, oklch(0.52 0.18 245 / 0.12), transparent 70%),
-    radial-gradient(ellipse 60% 45% at 85% 15%, oklch(0.55 0.2 290 / 0.08), transparent 70%),
-    linear-gradient(180deg, oklch(0.96 0.01 250), oklch(0.985 0.008 250));
-  --gradient-primary: linear-gradient(135deg, oklch(0.52 0.18 245), oklch(0.55 0.2 290));
-  --gradient-card: linear-gradient(150deg, oklch(1 0 0 / 0.95), oklch(0.96 0.01 250 / 0.9));
-  --shadow-glow: 0 15px 35px -12px oklch(0.52 0.18 245 / 0.3);
-  --shadow-card: 0 2px 5px oklch(0.2 0.02 260 / 0.05), 0 12px 32px -15px oklch(0.2 0.02 260 / 0.2);
-  --grid-line: oklch(0.3 0.02 260 / 0.05);
-}
-
 @layer base {
   * {
     border-color: var(--color-border);
@@ -170,6 +188,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   h1, h2, h3, h4 {
