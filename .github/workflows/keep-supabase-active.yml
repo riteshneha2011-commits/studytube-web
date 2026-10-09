@@ -1,0 +1,30 @@
+name: Keep Supabase Active
+
+on:
+  schedule:
+    # Runs every 3 days at 04:00 AM UTC (09:30 AM IST)
+    - cron: '0 4 */3 * *'
+  workflow_dispatch: # Allows manual 1-click trigger from GitHub Actions tab
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST API & Database
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://yvcbhgftjwwjpzzxvmmr.supabase.co' }}
+          SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2Y2JoZ2Z0and3anB6enh2bW1yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc1NDE5ODUsImV4cCI6MjEwMzExNzk4NX0.DsRh89FMaR9VrCab5CbtUttpwhPiEIKTyhzyk1Wgx00' }}
+        run: |
+          echo "Sending keep-alive heartbeat ping to Supabase..."
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X GET "${SUPABASE_URL}/rest/v1/projects?select=id&limit=1" \
+            -H "apikey: ${SUPABASE_ANON_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}")
+          
+          echo "Supabase HTTP Response Code: $RESPONSE"
+          
+          if [ "$RESPONSE" -ge 200 ] && [ "$RESPONSE" -lt 400 ]; then
+            echo "✅ Supabase database is active and responded successfully!"
+          else
+            echo "⚠️ Ping received status: $RESPONSE. Check if project is paused or URL is valid."
+            exit 1
+          fi
